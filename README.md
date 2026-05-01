@@ -41,14 +41,19 @@ Database
 - bcrypt  
 - Rate Limiting  
 
-
-
- Contributors
-- Prince (rkprince99)  
-- Sayyeda (sayyedaporna0)  
-- Dikshit (Dikshitgiri)  
+  
 
  Project Goals
 - Learn GitHub collaboration  
 - Understand ERP systems  
 - Build a team-based project  
+
+# Business Management System
+
+This project is developed using ERPNext to handle business operations like inventory, sales, and HR.
+
+ Team Members
+Contributors
+- Prince (rkprince99)  
+- Sayyeda (sayyedaporna0)  
+- Dikshit (Dikshitgiri)
