@@ -52,9 +52,3 @@ Database
 - Learn GitHub collaboration  
 - Understand ERP systems  
 - Build a team-based project  
-
----
-
-## 📌 Notes
-- Each member must commit changes  
-- Contributions are tracked using Git  
