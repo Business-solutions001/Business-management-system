@@ -1,59 +1,68 @@
-# Business-management-system
-This is a system.
+# Backend Deployment
 
-ERPNext Business Management System
+This NestJS app is a separate backend service. Vercel will not auto-host it just because the frontend is deployed there.
 
- About the Project
-This project is based on ERPNext, an open-source ERP system used to manage business operations such as accounting, inventory, and human resources.
+## Local setup
 
-The goal of this project is to learn team collaboration using GitHub and implement a business management system.
+```bash
+npm install
+cp .env.example .env
+npm run start:dev
+```
 
- Features
-- Accounting management  
-- Inventory tracking  
-- Sales and purchase management  
-- Employee and HR management  
+Default local API URL:
 
-## ⚙️ How to Use
-1. Clone the repository:
-   git clone https://github.com/Business-solutions001/business-management-system.git  
+```txt
+http://localhost:3001/api
+```
 
-2. Open the project in your IDE  
+## Required environment variables
 
-3. Run the project based on your setup  
+Create `backend/.env` with:
 
-Tech Stack
-Backend
-- Node.js  
-- NestJS  
- Frontend
-- React.js
-- 
-Database
-- MongoDB  
-- Redis  
+```env
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_KEY=your-supabase-anon-or-service-key
+JWT_SECRET=change-this-in-production
+PORT=3001
+FRONTEND_URL=http://localhost:5173
+```
 
- ORM / ODM
-- TypeORM  
+`FRONTEND_URL` can contain multiple comma-separated URLs, for example:
 
- Authentication & Security
-- JWT  
-- bcrypt  
-- Rate Limiting  
+```env
+FRONTEND_URL=http://localhost:5173,https://your-frontend.vercel.app
+```
 
-  
+## Deploy backend
 
- Project Goals
-- Learn GitHub collaboration  
-- Understand ERP systems  
-- Build a team-based project  
+Recommended hosts:
 
-# Business Management System
+- Railway
+- Render
+- Fly.io
 
-This project is developed using ERPNext to handle business operations like inventory, sales, and HR.
+Typical deploy settings:
 
- Team Members
-Contributors
-- Prince (rkprince99)  
-- Sayyeda (sayyedaporna0)  
-- Dikshit (Dikshitgiri)
+- Root Directory: `backend`
+- Install Command: `npm ci`
+- Build Command: `npm run build`
+- Start Command: `npm run start:prod`
+
+Environment variables to add on the backend host:
+
+- `SUPABASE_URL`
+- `SUPABASE_KEY`
+- `JWT_SECRET`
+- `PORT`
+- `FRONTEND_URL`
+
+## Connect frontend to backend
+
+After the backend is deployed, copy its public API base URL into the frontend env:
+
+```env
+VITE_API_URL=https://your-backend-domain.com/api
+```
+
+Then set the same frontend domain in the backend `FRONTEND_URL` variable so browser requests pass CORS.
